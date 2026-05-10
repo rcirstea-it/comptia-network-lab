@@ -61,7 +61,42 @@ end
 - ![Ping Test Results](ping-test.png)
 
 ---
+## Project 2 - DHCP Configuration ✅
 
-## Project 2 - DHCP Configuration 🔄 Coming Soon
+**Objective:** Configure the router as a DHCP server for both subnets.
+
+**What I did:**
+- Configured two DHCP pools on Cisco 1941 router via CLI (LAN1 and LAN2)
+- Set default gateway and DNS server (8.8.8.8) for each pool
+- Excluded router IP addresses from DHCP range
+- Switched all 4 PCs from static to DHCP
+- Verified automatic IP assignment and inter-subnet connectivity
+
+**Router DHCP Configuration:**
+
+ip dhcp pool LAN1
+network 192.168.1.0 255.255.255.0
+default-router 192.168.1.1
+dns-server 8.8.8.8
+ip dhcp pool LAN2
+network 192.168.2.0 255.255.255.0
+default-router 192.168.2.1
+dns-server 8.8.8.8
+ip dhcp excluded-address 192.168.1.1 192.168.1.9
+ip dhcp excluded-address 192.168.2.1 192.168.2.9
+
+**Results:**
+- PC0: 192.168.1.10 ✅
+- PC1: 192.168.1.11 ✅
+- PC2: 192.168.2.10 ✅
+- PC3: 192.168.2.11 ✅
+- Inter-subnet ping: 0% packet loss ✅
+
+**Skills demonstrated:** DHCP configuration, Cisco IOS, IP address management, DNS configuration
+
+**Screenshots:**
+- ![DHCP Topology](dhcp-topology.png)
+- ![DHCP IP Config](dhcp-ip-config.png)
+- ![DHCP Ping Test](dhcp-ping-test.png)
 ## Project 3 - VLANs 🔄 Coming Soon
 ## Project 4 - DNS & HTTP Server 🔄 Coming Soon
