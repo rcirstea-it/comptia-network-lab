@@ -148,7 +148,7 @@ switchport access vlan 20
 
 **Screenshots:**
 - ![VLAN Topology](vlan-topology.png)
-- ![VLAN Brief](show_vlan_brief.png)
+- ![VLAN Brief](show-vlan-brief.png)
 - ![Ping Success](vlan-ping-success.png)
 - ![Ping Blocked](vlan-ping-blocked.png)
 - 
