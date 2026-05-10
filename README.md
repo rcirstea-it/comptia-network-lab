@@ -98,5 +98,58 @@ ip dhcp excluded-address 192.168.2.1 192.168.2.9
 - ![DHCP Topology](dhcp-topology.png)
 - ![DHCP IP Config](dhcp-ip-config.png)
 - ![DHCP Ping Test](dhcp-ping-test.png)
-## Project 3 - VLANs 🔄 Coming Soon
+
+## Project 3 - VLAN Configuration & Network Segmentation ✅
+
+**Objective:** Configure VLANs on a Cisco switch to segment network traffic.
+
+**Topology:**
+- 1x Cisco 2960 Switch
+- 4x PCs (2 per VLAN)
+
+**VLAN Design:**
+
+| VLAN | Name | Ports | Subnet |
+|------|------|-------|--------|
+| 10 | Management | Fa0/1, Fa0/2 | 192.168.10.0/24 |
+| 20 | Sales | Fa0/3, Fa0/4 | 192.168.20.0/24 |
+
+**What I did:**
+- Created VLAN 10 (Management) and VLAN 20 (Sales) on Cisco 2960 switch
+- Assigned access ports to each VLAN via CLI
+- Configured static IP addresses on all PCs
+- Verified intra-VLAN communication (PC0 → PC1): Success
+- Verified inter-VLAN isolation (PC0 → PC2): Blocked — 100% loss
+
+**Switch CLI Configuration:**
+
+vlan 10
+name Management
+vlan 20
+name Sales
+interface FastEthernet0/1
+switchport mode access
+switchport access vlan 10
+interface FastEthernet0/2
+switchport mode access
+switchport access vlan 10
+interface FastEthernet0/3
+switchport mode access
+switchport access vlan 20
+interface FastEthernet0/4
+switchport mode access
+switchport access vlan 20
+
+**Test Results:**
+- PC0 → PC1 (VLAN 10 → VLAN 10): ✅ 0% packet loss
+- PC0 → PC2 (VLAN 10 → VLAN 20): ❌ 100% loss — segmentation working
+
+**Skills demonstrated:** VLANs, network segmentation, switch configuration, Cisco IOS, access ports, security isolation
+
+**Screenshots:**
+- ![VLAN Topology](vlan-topology.png)
+- ![VLAN Brief](show_vlan_brief.png)
+- ![Ping Success](vlan-ping-success.png)
+- ![Ping Blocked](vlan-ping-blocked.png)
+- 
 ## Project 4 - DNS & HTTP Server 🔄 Coming Soon
