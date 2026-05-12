@@ -151,5 +151,40 @@ switchport access vlan 20
 - ![VLAN Brief](show-vlan-brief.png)
 - ![Ping Success](vlan-ping-success.png)
 - ![Ping Blocked](vlan-ping-blocked.png)
-- 
-## Project 4 - DNS & HTTP Server 🔄 Coming Soon
+ 
+## Project 4 - DNS & HTTP Server ✅
+
+**Objective:** Configure a DNS and HTTP server to simulate real web infrastructure.
+
+**Topology:**
+- 1x Cisco 1941 Router
+- 1x Cisco 2960 Switch
+- 2x PCs
+- 1x Server (DNS + HTTP)
+
+**IP Addressing:**
+
+| Device | IP Address | Subnet Mask | Gateway | DNS |
+|--------|-----------|-------------|---------|-----|
+| Router | 192.168.1.1 | 255.255.255.0 | — | — |
+| PC0 | 192.168.1.10 | 255.255.255.0 | 192.168.1.1 | 192.168.1.100 |
+| PC1 | 192.168.1.11 | 255.255.255.0 | 192.168.1.1 | 192.168.1.100 |
+| Server | 192.168.1.100 | 255.255.255.0 | 192.168.1.1 | — |
+
+**What I did:**
+- Configured HTTP service on server with custom HTML page
+- Configured DNS service with A record: www.razvanlab.com → 192.168.1.100
+- Set DNS server address on all PCs pointing to 192.168.1.100
+- Verified HTTP access via IP address: http://192.168.1.100 ✅
+- Verified DNS resolution via hostname: www.razvanlab.com ✅
+
+**Test Results:**
+- http://192.168.1.100 → ✅ Page loaded
+- www.razvanlab.com → ✅ DNS resolved and page loaded
+
+**Skills demonstrated:** DNS configuration, HTTP server, A records, name resolution, web services, client-server architecture
+
+**Screenshots:**
+- ![DNS HTTP Topology](dns-http-topology.png)
+- ![Web Browser](dns-http-browser.png)
+- ![DNS Config](dns-config.png)
